@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 `;
             });
             id('container').innerHTML = list;
+            id('counter').innerText = `Astronauts: ${json.length}`;
         });
     });
 
