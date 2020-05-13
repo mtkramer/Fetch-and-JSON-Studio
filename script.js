@@ -2,7 +2,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     fetch("https://handlers.education.launchcode.org/static/astronauts.json").then((response) => {
         response.json().then((json) => {
-            let list = json.map((person, index) => {
+            let sortedList = json.sort((a, b) => {
+                return b.hoursInSpace - a.hoursInSpace;
+            });
+            let HTMLlist = sortedList.map((person, index) => {
                 return `
                 <div class="astronaut">
                     <div class="bio">
@@ -17,12 +20,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 </div>
                 `;
             });
-            id('container').innerHTML = list;
+            id('container').innerHTML = HTMLlist;
             id('counter').innerText = `Astronauts: ${json.length}`;
         });
     });
-
-
 
 });
 
